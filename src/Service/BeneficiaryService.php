@@ -24,7 +24,7 @@ class BeneficiaryService extends AbstractService
         return $this->request('POST', '/beneficiary_api_schemas/generate', $params);
     }
 
-    public function getFormSchema()
+    public function getFormSchema($params = [])
     {
         return $this->request('POST', '/beneficiary_form_schemas/generate', $params);
     }

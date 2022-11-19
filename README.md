@@ -32,11 +32,14 @@ $airwallex = new \Jitoot\Airwallex\Client([
     'production' => true,
 ]);
 //parameters
-$paymentIntent = $airwallex->paymentIntent->create([
+$response = $airwallex->paymentIntent->create([
     'description' => 'example customer',
     'email' => 'email@example.com',
     'payment_method' => 'pm_card_visa',
 ]);
+//response array consists of response code and body
+//$response[0] = 200
+//$response[1] = [ data ] 
 ```
 
 ## Components

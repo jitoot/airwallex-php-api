@@ -7,6 +7,7 @@ namespace Jitoot\Airwallex;
  */
 
 use Jitoot\Airwallex\Service\CoreServiceFactory;
+use Exception;
 
 class Client
 {
@@ -59,16 +60,12 @@ class Client
     {
         $token = $this->authenticate();
 
-        if ($token) {
-            $headers = [
-                'Authorization' => $token
-            ];
-            $response = $this->curl($method, $path, $headers, $params);
+        $headers = [
+            'Authorization' => $token
+        ];
+        $response = $this->curl($method, $path, $headers, $params);
 
-            return $response;
-        }
-
-        return false;
+        return $response;
     }
 
     protected function getApiUrl()
@@ -86,11 +83,11 @@ class Client
         
         list($code, $response) = $this->curl('POST', '/authentication/login', $headers);
 
-        if ($response->token) {
-            return $response->token;
+        if (!$response->token) {
+            throw new Exception($response->message);
         }
 
-        return false;
+        return $response->token;
     }
 
     //curl wrapper
