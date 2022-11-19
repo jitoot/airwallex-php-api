@@ -1,0 +1,21 @@
+{
+    "name": "jitoot/airwallex-php-api",
+    "description": "PHP API for Airwallex Payment API",
+    "autoload": {
+        "psr-4": {
+            "Jitoot\\Airwallex\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "James Pok",
+            "email": "jitoot@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.0",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*"
+    }
+}
